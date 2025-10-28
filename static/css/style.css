@@ -1,0 +1,16 @@
+﻿body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,102 @@
+# ========== VISUAL STUDIO ==========
+.vs/
+*.vsidx
+*.vspcc
+*.vsp
+*.vc.db
+*.VC.db
+*.VC.VC.opendb
+*.opendb
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.opensdf
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sql
+*.pdb
+*.ipch
+/Project.pyproj.user
+
+# ========== PYTHON ==========
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ========== МОДЕЛИ MACHINE LEARNING ==========
+models/*.h5
+models/*.pth
+models/*.weights
+*.model
+*.tflite
+
+# ========== ДАННЫЕ И ИЗОБРАЖЕНИЯ ==========
+chest_xray/
+static/uploads/*
+*.jpg
+*.png
+*.jpeg
+*.dcm
+*.npy
+*.npz
+
+# ========== ВИРТУАЛЬНЫЕ ОКРУЖЕНИЯ ==========
+venv/
+env/
+.venv/
+ENV/
+
+# ========== IDE и РЕДАКТОРЫ ==========
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ========== СИСТЕМНЫЕ ФАЙЛЫ ==========
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ========== LOGS ==========
+*.log
+logs/
+
+# ========== ВРЕМЕННЫЕ ФАЙЛЫ ==========
+*.tmp
+*.temp
+
+# ========== FLASK ==========
+instance/
+.webassets-cache
+
+# ========== WINDOWS ==========
+obj/
+Debug/
+Release/
+Project.pyproj.CoreCompileInputs.cache

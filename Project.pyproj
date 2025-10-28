@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{cf0d2f1b-b0d1-4f8b-bc44-7e2df2f5f8ec}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile />
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="desktop.ini" />
+    <Content Include="Mod\build\classpath\runClient_minecraftClasspath.txt" />
+    <Content Include="Mod\build\classpath\runData_minecraftClasspath.txt" />
+    <Content Include="Mod\build\classpath\runGameTestServer_minecraftClasspath.txt" />
+    <Content Include="Mod\build\classpath\runServer_minecraftClasspath.txt" />
+    <Content Include="Mod\build\reobfJar\log.txt" />
+    <Content Include="Mod\build\resources\main\assets\modid\textures\block\stella1.png" />
+    <Content Include="Mod\build\resources\main\assets\modid\textures\entity\example_entity.png" />
+    <Content Include="Mod\build\resources\main\assets\modid\textures\item\111.png" />
+    <Content Include="Mod\build\resources\main\assets\modid\textures\item\r12.png" />
+    <Content Include="Mod\build\_applyBinpatches_2\log.txt" />
+    <Content Include="Mod\build\_atJar_4\log.txt" />
+    <Content Include="Mod\run\crash-reports\crash-2025-02-27_20.46.30-fml.txt" />
+    <Content Include="Mod\run\crash-reports\crash-2025-02-27_20.47.19-fml.txt" />
+    <Content Include="Mod\run\crash-reports\crash-2025-02-27_20.56.26-fml.txt" />
+    <Content Include="Mod\run\crash-reports\crash-2025-02-27_20.58.16-fml.txt" />
+    <Content Include="Mod\run\crash-reports\crash-2025-03-01_02.09.40-fml.txt" />
+    <Content Include="Mod\run\crash-reports\crash-2025-03-01_14.55.09-client.txt" />
+    <Content Include="Mod\run\options.txt" />
+    <Content Include="Mod\run\saves\Новый мир\icon.png" />
+    <Content Include="Mod\src\main\resources\assets\modid\textures\block\stella1.png" />
+    <Content Include="Mod\src\main\resources\assets\modid\textures\entity\example_entity.png" />
+    <Content Include="Mod\src\main\resources\assets\modid\textures\item\111.png" />
+    <Content Include="Mod\src\main\resources\assets\modid\textures\item\r12.png" />
+    <Content Include="Картофель\fotor-ai-20250203171832.jpg" />
+    <Content Include="Прочее\111\Новый текстовый документ.txt" />
+    <Content Include="Прочее\Денчик\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mod\build\classpath" />
+    <Folder Include="Mod\build\reobfJar" />
+    <Folder Include="Mod\build\resources\main\assets\modid\textures\block" />
+    <Folder Include="Mod\build\resources\main\assets\modid\textures\entity" />
+    <Folder Include="Mod\build\resources\main\assets\modid\textures\item" />
+    <Folder Include="Mod\build\_applyBinpatches_2" />
+    <Folder Include="Mod\build\_atJar_4" />
+    <Folder Include="Mod\run" />
+    <Folder Include="Mod\run\crash-reports" />
+    <Folder Include="Mod\run\saves\Новый мир" />
+    <Folder Include="Mod\src\main\resources\assets\modid\textures\block" />
+    <Folder Include="Mod\src\main\resources\assets\modid\textures\entity" />
+    <Folder Include="Mod\src\main\resources\assets\modid\textures\item" />
+    <Folder Include="Картофель" />
+    <Folder Include="Прочее\111" />
+    <Folder Include="Прочее\Денчик" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

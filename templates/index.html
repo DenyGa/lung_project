@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диагностика пневмонии</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .result {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Диагностика пневмонии по рентгеновским снимкам</h1>
+
+    {% if message %}
+    <div class="message {% if 'success' in message %}success{% else %}error{% endif %}">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Результат анализа:</h2>
+        <p><strong>{{ prediction }}</strong></p>
+    </div>
+    {% endif %}
+
+    {% if image_path %}
+    <div>
+        <h3>Загруженное изображение:</h3>
+        <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="Анализируемое изображение">
+    </div>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+        <div>
+            <label for="file">Выберите рентгеновский снимок:</label>
+            <input type="file" name="file" id="file" accept=".png,.jpg,.jpeg" required>
+        </div>
+        <button type="submit">Загрузить и проанализировать</button>
+    </form>
+
+    <div style="margin-top: 30px; font-size: 0.9em; color: #666;">
+        <p><strong>Поддерживаемые форматы:</strong> PNG, JPG, JPEG</p>
+        <p><strong>Рекомендации:</strong> Загружайте четкие рентгеновские снимки грудной клетки</p>
+    </div>
+</body>
+</html>
