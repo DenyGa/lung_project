@@ -14,3 +14,51 @@ form {
 input[type="file"] {
     margin-bottom: 10px;
 }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+.btn-info {
+    background: #17a2b8;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: black;
+}
+
+.btn-success {
+    background: #28a745;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+
+/* Элементы истории */
+.history-item {
+    transition: transform 0.2s;
+}
+
+    .history-item:hover {
+        transform: translateX(5px);
+    }
+
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.history-item {
+    animation: fadeIn 0.5s ease-out;
+}

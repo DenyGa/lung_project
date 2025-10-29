@@ -3,6 +3,10 @@ import os
 from PIL import Image
 import numpy as np
 import tensorflow as tf
+import json
+from datetime import datetime
+
+DIAGNOSIS_DB = 'diagnosis_history.json'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -10,6 +14,19 @@ app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'dcm'}
 
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs('models', exist_ok=True)
+
+def load_diagnosis_history():
+    try:
+        with open(DIAGNOSIS_DB, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
+def save_diagnosis_history(history):
+    with open(DIAGNOSIS_DB, 'w', encoding='utf-8') as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+diagnosis_history = load_diagnosis_history()
 
 try:
     model = tf.keras.models.load_model('models/best_lung_model.h5')
@@ -68,6 +85,17 @@ def predict_disease(image_path):
 def index():
     return render_template('index.html')
 
+@app.route('/history')
+def view_history():
+    return render_template('index.html', history=diagnosis_history)
+
+@app.route('/clear_history')
+def clear_history():
+    global diagnosis_history
+    diagnosis_history = []
+    save_diagnosis_history(diagnosis_history)
+    return render_template('index.html', message='История очищена!', history=[])
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -80,10 +108,21 @@ def upload_file():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
         diagnosis, probability = predict_disease(filepath)
+        history_entry = {
+            'id': len(diagnosis_history) + 1,
+            'filename': filename,
+            'diagnosis': diagnosis,
+            'probability': probability,
+            'timestamp': datetime.now().strftime('%d.%m.%Y %H:%M'),
+            'image_path': filename 
+        }
+        diagnosis_history.append(history_entry)
+        save_diagnosis_history(diagnosis_history)
         return render_template('index.html', 
                              message='File uploaded successfully!',
                              prediction=f"{diagnosis} (вероятность: {probability}%)",
-                             image_path=filepath)
+                             image_path=filepath,
+                             history=diagnosis_history[-5:])
     return render_template('index.html', message='Invalid file type')
 
 if __name__ == '__main__':

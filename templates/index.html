@@ -99,9 +99,50 @@
         <button type="submit">Загрузить и проанализировать</button>
     </form>
 
+    <div class="control-panel" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+        <h3>⚙️ Панель управления</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="/history" class="btn btn-info">📋 Вся история</a>
+            <a href="/clear_history" class="btn btn-warning" onclick="return confirm('Очистить всю историю?')">🗑️ Очистить историю</a>
+        </div>
+    </div>
+
+    <!-- История диагностик -->
+    <div class="history-section" style="margin: 20px 0;">
+        <h3>📈 История анализов (последние 5)</h3>
+        {% if history %}
+        <div class="history-list">
+            {% for record in history|reverse %}
+            <div class="history-item" style="padding: 10px; margin: 5px 0; border-left: 4px solid {% if record.diagnosis == 'Пневмония' %}#dc3545{% else %}#28a745{% endif %}; background: white;">
+                <div style="display: flex; justify-content: between; align-items: center;">
+                    <div>
+                        <strong>{{ record.filename }}</strong>
+                        <br>
+                        <span style="color: {% if record.diagnosis == 'Пневмония' %}#dc3545{% else %}#28a745{% endif %};">
+                            {{ record.diagnosis }} ({{ record.probability }}%)
+                        </span>
+                        <br>
+                        <small style="color: #666;">{{ record.timestamp }}</small>
+                    </div>
+                    <div>
+                        {% if record.image_path %}
+                        <img src="{{ url_for('static', filename='uploads/' + record.image_path) }}"
+                             style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="color: #666; text-align: center;">История анализов пуста</p>
+        {% endif %}
+    </div>
+
     <div style="margin-top: 30px; font-size: 0.9em; color: #666;">
         <p><strong>Поддерживаемые форматы:</strong> PNG, JPG, JPEG</p>
         <p><strong>Рекомендации:</strong> Загружайте четкие рентгеновские снимки грудной клетки</p>
     </div>
+    </script>
 </body>
 </html>
