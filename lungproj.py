@@ -83,18 +83,18 @@ def predict_disease(image_path):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@app.route('/history')
-def view_history():
-    return render_template('index.html', history=diagnosis_history)
-
-@app.route('/clear_history')
-def clear_history():
-    global diagnosis_history
-    diagnosis_history = []
-    save_diagnosis_history(diagnosis_history)
-    return render_template('index.html', message='История очищена!', history=[])
+    total = len(diagnosis_history)
+    
+    pneumonia_count = sum(1 for record in diagnosis_history if record['diagnosis'] == 'Пневмония')
+    normal_count = total - pneumonia_count
+    pneumonia_percent = round((pneumonia_count / total) * 100, 1) if total > 0 else 0
+    
+    return render_template('index.html', 
+                         total=total,
+                         pneumonia_count=pneumonia_count,
+                         normal_count=normal_count,
+                         pneumonia_percent=pneumonia_percent,
+                         history=diagnosis_history[-5:])
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -118,13 +118,30 @@ def upload_file():
         }
         diagnosis_history.append(history_entry)
         save_diagnosis_history(diagnosis_history)
+        
+        total = len(diagnosis_history)
+        pneumonia_count = sum(1 for record in diagnosis_history if record['diagnosis'] == 'Пневмония')
+        normal_count = total - pneumonia_count
+        pneumonia_percent = round((pneumonia_count / total) * 100, 1) if total > 0 else 0
+
         return render_template('index.html', 
                              message='File uploaded successfully!',
-                             prediction=f"{diagnosis} (вероятность: {probability}%)",
-                             image_path=filepath,
+                             diagnosis=diagnosis,
+                             probability=probability,
+                             image_path=filename,
+                             total=total,
+                             pneumonia_count=pneumonia_count,
+                             normal_count=normal_count,
+                             pneumonia_percent=pneumonia_percent,
                              history=diagnosis_history[-5:])
     return render_template('index.html', message='Invalid file type')
 
+@app.route('/clear_history')
+def clear_history():
+    global diagnosis_history
+    diagnosis_history = []
+    save_diagnosis_history(diagnosis_history)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)
-

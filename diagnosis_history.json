@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "id": 1,
+    "filename": "111111111111111111.jpg",
+    "diagnosis": "Пневмония",
+    "probability": 100.0,
+    "timestamp": "31.10.2025 01:07",
+    "image_path": "111111111111111111.jpg"
+  },
+  {
+    "id": 2,
+    "filename": "33333333333333333333.jpg",
+    "diagnosis": "Здоров",
+    "probability": 80.73,
+    "timestamp": "31.10.2025 01:08",
+    "image_path": "33333333333333333333.jpg"
+  },
+  {
+    "id": 3,
+    "filename": "Chest_Xray_PA_3-8-2010_inverted.png",
+    "diagnosis": "Здоров",
+    "probability": 85.13,
+    "timestamp": "31.10.2025 01:08",
+    "image_path": "Chest_Xray_PA_3-8-2010_inverted.png"
+  },
+  {
+    "id": 4,
+    "filename": "resize.jpg",
+    "diagnosis": "Пневмония",
+    "probability": 86.25,
+    "timestamp": "31.10.2025 01:08",
+    "image_path": "resize.jpg"
+  },
+  {
+    "id": 5,
+    "filename": "ls_tgdoyf4q.jpg",
+    "diagnosis": "Здоров",
+    "probability": 100.0,
+    "timestamp": "31.10.2025 01:08",
+    "image_path": "ls_tgdoyf4q.jpg"
+  },
+  {
+    "id": 6,
+    "filename": "222222222222222222.jpg",
+    "diagnosis": "Пневмония",
+    "probability": 99.89,
+    "timestamp": "31.10.2025 01:08",
+    "image_path": "222222222222222222.jpg"
+  }
+]
